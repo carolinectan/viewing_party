@@ -20,3 +20,25 @@ Viewing party is an application in which users can explore movie options and cre
 - Rails 5.2.5
 
 Example wireframes to follow are found [here](https://backend.turing.io/module3/projects/viewing_party/wireframes)
+
+## Tools Used
+
+| Development | Testing       | Gems            |
+|   :----:    |    :----:     |    :----:       |
+| Ruby 2.7.2  | RSpec         | SimpleCov       |
+| Rails 5.2.5 |               | Pry             |
+| HTML5       |               | Capybara        |
+| CSS3        |               | ShouldaMatchers |
+| VSCode      |               | Launchy         |
+| Atom        |               |                 |
+| Github      |               |                 |
+
+## Contributors
+
+👤  **Caroline Tan**
+- [GitHub](https://github.com/carolinectan)
+- [LinkedIn](https://www.linkedin.com/in/carolinectan/)
+
+👤  **Matt Kragen**
+- [GitHub](https://github.com/InOmn1aParatus)
+- [LinkedIn](https://www.linkedin.com/in/mattkragen/)
