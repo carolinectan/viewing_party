@@ -17,7 +17,7 @@ RSpec.describe 'welcome page' do
 
   describe 'login' do
     it 'has a button to login' do
-      expect(page).to have_button('Log In')
+      expect(page).to have_link('Log In')
     end
   end
 
