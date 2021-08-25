@@ -13,12 +13,12 @@ RSpec.describe 'user registration form' do
     email = 'ilovedogs@gmail.com'
     password = 'test'
 
-    fill_in :email, with: email
-    fill_in :password, with: password
+    fill_in :user_email, with: email
+    fill_in :user_password, with: password
 
     click_on 'Register'
 
-    expect(page).to have_content("Welcome, #{username}!")
+    expect(page).to have_content("Welcome, #{email}!")
   end
 end
 

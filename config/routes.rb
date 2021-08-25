@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   post '/login', to: 'users#login'
 
   get '/registration', to: 'users#new', as: :users
+  post '/registration', to: 'users#create'
 end
