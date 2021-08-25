@@ -11,7 +11,7 @@ RSpec.describe 'logging in' do
     click_button 'Log In'
 
     expect(current_path).to eq(login_path)
-save_and_open_page
+
     fill_in :email, with: @user.email
     fill_in :password, with: @user.password
 
