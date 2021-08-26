@@ -27,18 +27,27 @@ RSpec.describe "Dashboard page" do
     end
 
     context "Friends" do
-      xit 'displays friends of user' do
+      it 'displays friends of user' do
         visit dashboard_path
 
         within("#friends") do
-          expect(page).to have_field(friend_search)
+          expect(page).to have_content("Friends")
         end
       end
     end
 
     context "Viewing Parties" do
-      xit 'displays viewing parties this user has created' do
+      before :each do
+        visit dashboard_path
+      end
+
+      it 'contains Viewing Party section' do
+        expect(page).to have_content("Viewing Parties")
+      end
+
+      it 'displays viewing parties this user has created' do
         within("#my-parties") do
+          expect(page).to have_content("My Parties")
           # link_to movie
           # date/time
           # You are the host
@@ -46,11 +55,12 @@ RSpec.describe "Dashboard page" do
         end
       end
 
-      xit 'displays viewing parties this user has been invited to' do
+      it 'displays viewing parties this user has been invited to' do
         within("#party-invites") do
+          expect(page).to have_content("Viewing Party Invites")
           # link_to movie
           # date/time
-          # You are the host
+          # Host
           # list of invited friends
         end
       end
