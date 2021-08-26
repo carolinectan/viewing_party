@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe 'logging in' do
   before :each do
     @user = User.create(email: 'ilovedogs@gmail.com', password: 'test')
-    require "pry"; binding.pry
   end
 
   it 'can log in with valid credentials' do
