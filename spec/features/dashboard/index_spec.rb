@@ -21,8 +21,8 @@ RSpec.describe "Dashboard page" do
       fill_in :password, with: user.password
 
       click_on 'Log In'
+
       expect(current_path).to eq(dashboard_path)
-      
       expect(page).to have_content("Welcome, #{user.email}!")
     end
 
