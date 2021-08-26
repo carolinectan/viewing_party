@@ -19,12 +19,13 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome, #{user.email}!"
       redirect_to root_path
     else
-      flash[:error] = "Sorry, your credentials are bad."
+      flash[:error] = 'Sorry, your credentials are bad.'
       render :login_form
     end
   end
 
   private
+
   def user_params
     params.require(:user).permit(:email, :password_digest)
   end
