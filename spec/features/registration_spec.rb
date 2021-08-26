@@ -34,7 +34,6 @@ RSpec.describe 'user registration form' do
 
     expect(current_path).to eq('/dashboard')
   end
+
+  # Add sad path test for if a user already exists, plus message.
 end
-
-
-# Once the user registers they should be logged in and redirected to the dashboard page

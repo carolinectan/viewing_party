@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   post '/registration', to: 'users#create'
 
   get '/dashboard', to: 'dashboard#index'
+  
+  get '/discover', to: 'discover#index'
 end
