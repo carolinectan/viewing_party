@@ -6,6 +6,7 @@ RSpec.describe "Dashboard page" do
       visit dashboard_path
 
       click_on "Discover Movies"
+
       expect(current_path).to eq(discover_path)
     end
   end
@@ -13,20 +14,21 @@ RSpec.describe "Dashboard page" do
   describe 'features' do
     it 'displays greeting to authenticated user' do
       visit login_path
-  
+
       user = User.create(email: 'ilovedogs@gmail.com', password: 'test')
-      
+
       fill_in :email, with: user.email
       fill_in :password, with: user.password
-  
+
       click_on 'Log In'
+      
       expect(page).to have_content("Welcome, #{user.email}!")
     end
 
     context "Friends" do
       xit 'displays friends of user' do
         visit dashboard_path
-        
+
         within("#friends") do
           expect(page).to have_field(friend_search)
         end
@@ -42,7 +44,7 @@ RSpec.describe "Dashboard page" do
           # list of invited friends
         end
       end
-      
+
       xit 'displays viewing parties this user has been invited to' do
         within("#party-invites") do
           # link_to movie
