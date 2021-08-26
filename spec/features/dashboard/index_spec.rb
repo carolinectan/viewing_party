@@ -21,7 +21,10 @@ RSpec.describe "Dashboard page" do
       fill_in :password, with: user.password
 
       click_on 'Log In'
-      
+
+      # expect(current_path).to eq(dashboard_path)
+      # this test currently passes though it doesn't test the message on the dashboard page
+      # consider refactoring to use a view conditional like if user.save, then display x
       expect(page).to have_content("Welcome, #{user.email}!")
     end
 
