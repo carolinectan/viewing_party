@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe "Movies index page" do
   describe 'features' do
     it 'displays top 40 results from search' do
-  
+      visit movies_path
+
+      expect(page).to have_content("Top 40 Movies")
     end
   end
 end
