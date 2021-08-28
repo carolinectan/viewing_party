@@ -3,4 +3,9 @@
 
 <section id="top-40">
   <h2>Top 40 Movies</h2>
+  <% @movies.each do |movie| %>
+    <h3><%= movie.title %></h3>
+    <p>Vote Average: <%= movie.vote_average %></p>
+    <br>
+  <% end %>
 </section>

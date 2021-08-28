@@ -4,7 +4,7 @@ RSpec.describe "Movies index page" do
   describe 'features' do
     it 'displays top 40 results from search' do
       visit movies_path
-
+      save_and_open_page
       expect(page).to have_content("Top 40 Movies")
     end
   end
