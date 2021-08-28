@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe '' do
+RSpec.describe 'movies show page' do
   before :each do
 
     visit "/"
