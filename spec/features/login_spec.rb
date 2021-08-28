@@ -7,7 +7,7 @@ RSpec.describe 'logging in' do
 
   it 'can log in with valid credentials' do
     visit root_path
-    
+
     click_on 'Log In'
 
     expect(current_path).to eq(login_path)
@@ -16,8 +16,8 @@ RSpec.describe 'logging in' do
     fill_in :password, with: @user.password
 
     click_on 'Log In'
-    expect(current_path).to eq(dashboard_path)
 
+    expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("Welcome, #{@user.email}!")
   end
 
