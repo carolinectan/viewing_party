@@ -10,6 +10,18 @@ RSpec.describe "Movies index page" do
   end
 
   describe 'navigation' do
+    before :each do
+      json_response = File.read("spec/fixtures/top_40.json")
+      stub_request(:get, "https://api.themoviedb.org/3/movie/popular?api_key=c4f54a02aa2875bebf5bedbd9afeeb73&language=en-US&page=1").
+         with(
+           headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent'=>'Faraday v1.7.0'
+           }).
+         to_return(status: 200, body: json_response, headers: {})
+    end
+
     it 'links to movie show page through movie title' do
       visit movies_path
 
