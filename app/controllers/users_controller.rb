@@ -9,8 +9,7 @@ class UsersController < ApplicationController
     redirect_to dashboard_path
   end
 
-  def login_form
-  end
+  def login_form; end
 
   def login
     user = User.find_by(email: params[:email])
