@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
   def index
-    @movies = MovieService.new
+    @movies = MovieService.new.top_movies
   end
 end
