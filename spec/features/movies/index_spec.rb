@@ -8,6 +8,16 @@ RSpec.describe "Movies index page" do
       expect(page).to have_content("Top 40 Movies")
     end
   end
+
+  describe 'navigation' do
+    it 'links to movie show page through movie title' do
+      visit movies_path
+
+      within "#movie-id-436969" do
+        click_on "The Suicide Squad"
+      end
+    end
+  end
 end
 
 # As an authenticated user,
