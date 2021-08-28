@@ -16,6 +16,8 @@ RSpec.describe "Movies index page" do
       within "#movie-id-436969" do
         click_on "The Suicide Squad"
       end
+
+      expect(current_path).to eq(movie_path(436969))
     end
   end
 end
