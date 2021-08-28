@@ -1,8 +1,9 @@
 class Movie < MovieService
-  attr_reader :title, :vote_average
+  attr_reader :title, :vote_average, :id
 
-  def initialize(title, vote_average)
+  def initialize(title, vote_average, id)
     @title = title
     @vote_average = vote_average
+    @id = id
   end
 end
