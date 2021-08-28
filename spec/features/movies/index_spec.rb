@@ -6,7 +6,6 @@ RSpec.describe "Movies index page" do
       visit movies_path
 
       expect(page).to have_content("Top 40 Movies")
-      expect()
     end
   end
 end
