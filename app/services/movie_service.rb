@@ -9,7 +9,7 @@ class MovieService < ApiService
       req.params['page'] = page_number
     end
 
-    parsed_data = parsed(data)
+    parsed_data = get_json(data)
 
     parsed_data[:results].map do |movie|
       Movie.new(movie[:title], movie[:vote_average], movie[:id])

@@ -3,7 +3,7 @@ class ApiService
     response = Faraday.new(endpoint)
   end
 
-  def parsed(response)
+  def get_json(response)
     JSON.parse(response.body, symbolize_names: true)
   end
 end

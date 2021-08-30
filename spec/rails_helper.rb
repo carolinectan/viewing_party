@@ -73,8 +73,8 @@ end
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes" # where we store the cassettes
   config.hook_into :webmock # what library VCR should use for intercepting these requests (WebMock)
-  config.default_cassette_options = {
-    :match_requests_on => [:method,
-      VCR.request_matchers.uri_without_param(:url)]
-  }
+  # config.default_cassette_options = {
+  #   :match_requests_on => [:method,
+  #     VCR.request_matchers.uri_without_param(:url)]
+  # }
 end
