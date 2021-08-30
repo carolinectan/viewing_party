@@ -1,4 +1,4 @@
-class Movie < MovieService
+class Movie
   attr_reader :title, :vote_average, :id
 
   def initialize(title, vote_average, id)
