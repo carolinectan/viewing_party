@@ -1,6 +1,15 @@
 <h1><%= @movie.title %>'s Details</h1>
 <hr><br>
 
+<p>Runtime: <%= @movie.runtime %> minutes</p>
+<p>Vote Average: <%= @movie.vote_average %></p>
+<p>Summary: <%= @movie.summary %></p>
+<p>Genres: 
+  <% @movie.genres.each do |genre| %>
+    <%= genre %>
+  <% end %>
+</p>
+
 <%= button_to "Create a Viewing Party" %>
 <br>
 
