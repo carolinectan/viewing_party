@@ -30,6 +30,10 @@ RSpec.describe 'movies show page' do
           expect(page).to have_content("Rating: 8.0")
           expect(page).to have_content("stayed true to the hype of the anti-hero teams in DC")
         end
+        # create movie
+        # allow movie facade to create movie and return movie that you create in test
+        # visit dynamic movie path
+        # pass the review.id in within block
       end
     end
   end

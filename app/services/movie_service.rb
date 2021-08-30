@@ -10,10 +10,12 @@ class MovieService < ApiService
     end
 
     parsed_data = get_json(data)
-
     parsed_data[:results].map do |movie|
       Movie.new(movie[:title], movie[:vote_average], movie[:id])
     end
+    # parsed_data[:results].map do |result|
+      # Movie.new(result)
+    # end
   end
 
   def details(movie_id)
@@ -25,5 +27,6 @@ class MovieService < ApiService
     parsed_data = get_json(data)
 
     Movie.new(parsed_data[:title], parsed_data[:vote_average], parsed_data[:id])
+    # Movie.new(result)
   end
 end
