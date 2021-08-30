@@ -9,11 +9,13 @@ RSpec.describe "Discover index page" do
     end
 
     it 'discover button visits movies_path' do
-      visit discover_path
-
-      click_button "Discover Top 40 Movies"
-
-      expect(current_path).to eq(movies_path)
+      VCR.use_cassette('movie_details') do
+        visit discover_path
+  
+        click_button "Discover Top 40 Movies"
+        
+        expect(current_path).to eq(movies_path)
+      end
     end
   end
 end

@@ -3,14 +3,11 @@
 
 <section id="top-40">
   <h2>Top 40 Movies</h2>
-  <% @movies1.each do |movie| %>
-    <h3><%= movie.title %></h3>
-    <p>Vote Average: <%= movie.vote_average %></p>
-    <br>
-  <% end %>
-  <% @movies2.each do |movie| %>
-    <h3><%= movie.title %></h3>
-    <p>Vote Average: <%= movie.vote_average %></p>
+  <% @movies.each do |movie| %>
+    <div id="movie-id-<%= movie.id %>">
+      <h3><%= link_to "#{movie.title}", "/movies/#{movie.id}" %></h3>
+      <p>Vote Average: <%= movie.vote_average %></p>
+    </div>
     <br>
   <% end %>
 </section>
