@@ -4,10 +4,10 @@ RSpec.describe 'movies show page' do
   it 'displays movie details' do
     VCR.use_cassette('single_movie_details') do
       visit movie_path(436969)
-      save_and_open_page
+      # save_and_open_page
       expect(page).to have_content("The Suicide Squad's Details")
-      expect(page).to have_content("Vote Average: 8.0")
       expect(page).to have_content("Runtime: 132 minutes")
+      expect(page).to have_content("Vote Average: 8.0")
       expect(page).to have_content("Genres: Action, Adventure, Fantasy, Comedy")
       expect(page).to have_content("Summary: Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.")
     end

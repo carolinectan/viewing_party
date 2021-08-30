@@ -14,7 +14,6 @@ class Movie
     @genres = hash[:genres].map do |genre|
       genre[:name]
     end
-    require 'pry'; binding.pry
     @summary = hash[:overview]
   end
 end
