@@ -1,17 +1,19 @@
 class Movie
-  attr_reader :title, :vote_average, :id
+  attr_reader :title,
+              :vote_average,
+              :id,
+              :runtime,
+              :genres,
+              :summary
 
-  def initialize(title, vote_average, id)
-    @title = title
-    @vote_average = vote_average
-    @id = id
+  def initialize(hash)
+    @title = hash[:title]
+    @vote_average = hash[:vote_average]
+    @id = hash[:id]
+    @runtime = hash[:runtime]
+    @genres = hash[:genres].map do |genre|
+      genre[:name]
+    end
+    @summary = hash[:overview]
   end
-
-  # def initialize(hash)
-  #   @title = hash[:title]
-  #   @vote_average = hash[:vote_average]
-  #   @id = hash[:id]
-  # end
-
-  #will create movie object with values or with nil
 end
