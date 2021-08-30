@@ -8,6 +8,10 @@ RSpec.describe "Movies index page" do
 
         expect(page).to have_content("Top 40 Movies")
 
+        within "#top-40" do
+          expect(page).to have_css("div", :count => 40)
+        end
+
         expect(page).to have_content("The Suicide Squad")
         expect(page).to have_content("PAW Patrol: The Movie")
         expect(page).to have_content("Jungle Cruise")
