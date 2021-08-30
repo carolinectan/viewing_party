@@ -4,6 +4,7 @@ class MoviesController < ApplicationController
   end
 
   def show
-    # @reviews = ReviewService.new.reviews(params[:id])
+    @movie = MovieService.new.details(params[:id])
+    @reviews = ReviewService.new.reviews(params[:id])
   end
 end
