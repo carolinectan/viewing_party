@@ -10,9 +10,11 @@ RSpec.describe 'movies show page' do
   end
 
   it 'has a button to create a viewing party' do
+    VCR.use_cassette('movie_reviews') do
       visit movie_path(436969)
 
       expect(page).to have_button("Create a Viewing Party")
+    end
   end
 
   describe 'reviews section' do
@@ -24,8 +26,7 @@ RSpec.describe 'movies show page' do
         expect(page).to have_content("Total Reviews: 4")
 
         within "#review-id-61048d3d688cd0007f215a28" do
-          expect(page).to have_content("Author: Peter89Spencer")
-          expect(page).to have_content("Name:")
+          expect(page).to have_content("Username: Peter89Spencer")
           expect(page).to have_content("Rating: 8.0")
           expect(page).to have_content("stayed true to the hype of the anti-hero teams in DC")
         end
