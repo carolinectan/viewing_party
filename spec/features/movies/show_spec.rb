@@ -1,12 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe 'movies show page' do
+  it 'displays the movie title' do
+    VCR.use_cassette('single_movie_details') do
+      visit movie_path(436969)
+
+      expect(page).to have_content("The Suicide Squad's Details")
+    end
+  end
+
   it 'has a button to create a viewing party' do
-    VCR.use_cassette('movie_reviews') do
       visit movie_path(436969)
 
       expect(page).to have_button("Create a Viewing Party")
-    end
   end
 
   describe 'reviews section' do
@@ -15,7 +21,6 @@ RSpec.describe 'movies show page' do
 
         visit movie_path(436969)
         save_and_open_page
-        expect(page).to have_content("The Suicide Squad's Details")
         expect(page).to have_content("Total Reviews: 4")
 
         within "#review-id-61048d3d688cd0007f215a28" do

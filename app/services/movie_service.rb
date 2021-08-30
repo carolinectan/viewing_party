@@ -19,13 +19,11 @@ class MovieService < ApiService
   def details(movie_id)
     data = get_data("https://api.themoviedb.org/3/movie/#{movie_id}").get do |req|
       req.params['api_key'] = ENV['movie_api_key']
-      req.params['page'] = 1 # what if there are more than one page of reviews?
+      req.params['language'] = 'en-US'
     end
 
     parsed_data = get_json(data)
 
-    parsed_data[:results].map do |movie|
-      Movie.new(movie[:title], movie[:vote_average], movie[:id])
-    end
+    Movie.new(parsed_data[:title], parsed_data[:vote_average], parsed_data[:id])
   end
 end
