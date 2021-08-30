@@ -30,8 +30,10 @@ RSpec.describe "Movies index page" do
       VCR.use_cassette('movie_details') do
         visit movies_path
 
-        within "#movie-id-436969" do
-          click_on "The Suicide Squad"
+        VCR.use_cassette('single_movie_details') do
+          within "#movie-id-436969" do
+            click_on "The Suicide Squad"
+          end
         end
 
         expect(current_path).to eq(movie_path(436969))
