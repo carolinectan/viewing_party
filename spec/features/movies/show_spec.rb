@@ -4,7 +4,6 @@ RSpec.describe 'movies show page' do
   it 'displays movie details' do
     VCR.use_cassette('single_movie_details') do
       visit movie_path(436969)
-      # save_and_open_page
       expect(page).to have_content("The Suicide Squad's Details")
       expect(page).to have_content("Runtime: 132 minutes")
       expect(page).to have_content("Vote Average: 8.0")
