@@ -4,8 +4,9 @@ class MovieService < ApiService
   end
 
   def top_movies(page_number)
-    data = get_data("https://api.themoviedb.org/3/movie/popular?language=en-US&page=#{page_number}").get do |req|
+    data = get_data("https://api.themoviedb.org/3/movie/popular").get do |req|
       req.params['api_key'] = ENV['movie_api_key']
+      req.params['page'] = page_number
     end
 
     parsed_data = parsed(data)
