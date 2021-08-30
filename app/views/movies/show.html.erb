@@ -1,0 +1,15 @@
+<h1><%= @movie.title %>'s Details</h1>
+<hr><br>
+
+<%= button_to "Create a Viewing Party" %>
+<br>
+
+Total Reviews: <%= @reviews.count %>
+
+<% @reviews.each do |review| %>
+  <div id="review-id-<%= review.id %>">
+    <h2><%= review.author %></h2>
+    <p>Rating: <%= review.rating %></p>
+    <p>Review: "<%= review.content %>"</p>
+  </div>
+<% end %>

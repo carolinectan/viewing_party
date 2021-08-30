@@ -1,18 +1,46 @@
 require 'rails_helper'
 
 RSpec.describe 'movies show page' do
-  before :each do
+  it 'displays the movie title' do
+    VCR.use_cassette('single_movie_details') do
+      visit movie_path(436969)
 
-    visit "/"
+      expect(page).to have_content("The Suicide Squad's Details")
+    end
   end
 
-  it '' do
+  it 'has a button to create a viewing party' do
+    VCR.use_cassette('movie_reviews') do
+      visit movie_path(436969)
 
+      expect(page).to have_button("Create a Viewing Party")
+    end
+  end
+
+  describe 'reviews section' do
+    it 'displays the total count of reviews' do
+      VCR.use_cassette('movie_reviews') do
+
+        visit movie_path(436969)
+
+        expect(page).to have_content("Total Reviews: 4")
+
+        within "#review-id-61048d3d688cd0007f215a28" do
+          expect(page).to have_content("Peter89Spencer")
+          expect(page).to have_content("Rating: 8.0")
+          expect(page).to have_content("stayed true to the hype of the anti-hero teams in DC")
+        end
+        # create movie
+        # allow movie facade to create movie and return movie that you create in test
+        # visit dynamic movie path
+        # pass the review.id in within block
+      end
+    end
   end
 end
 
 # As an authenticated user,
-# When I visit the movie's detail page,
+# When I visit the movie's details page,
 # I should see
 #
 #  Button to create a viewing party
@@ -26,6 +54,8 @@ end
 #  Genere(s) associated to movie
 #  Summary description
 #  List the first 10 cast members (characters&actress/actors)
+
+
 #  Count of total reviews
 #  Each review's author and information
 # Details: This information should come from 3 different endpoints from The Movie DB API

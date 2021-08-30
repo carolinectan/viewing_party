@@ -21,20 +21,20 @@ gem 'faraday'
 
 group :development, :test do
   gem 'pry'
-  gem 'travis'
   gem 'shoulda-matchers'
+  gem 'travis'
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop-rails'
   gem 'travis'
+  gem 'web-console', '>= 3.3.0'
 end
 
 group :test do
-  gem 'rspec-rails'
   gem 'capybara'
+  gem 'rspec-rails'
   gem 'launchy'
   gem 'simplecov'
   gem 'vcr'

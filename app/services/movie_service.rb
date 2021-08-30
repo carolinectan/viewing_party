@@ -4,14 +4,29 @@ class MovieService < ApiService
   end
 
   def top_movies(page_number)
-    data = get_data("https://api.themoviedb.org/3/movie/popular?language=en-US&page=#{page_number}").get do |req|
+    data = get_data('https://api.themoviedb.org/3/movie/popular').get do |req|
       req.params['api_key'] = ENV['movie_api_key']
+      req.params['page'] = page_number
     end
 
-    parsed_data = parsed(data)
-
+    parsed_data = get_json(data)
     parsed_data[:results].map do |movie|
       Movie.new(movie[:title], movie[:vote_average], movie[:id])
     end
+    # parsed_data[:results].map do |result|
+      # Movie.new(result)
+    # end
+  end
+
+  def details(movie_id)
+    data = get_data("https://api.themoviedb.org/3/movie/#{movie_id}").get do |req|
+      req.params['api_key'] = ENV['movie_api_key']
+      req.params['language'] = 'en-US'
+    end
+
+    parsed_data = get_json(data)
+
+    Movie.new(parsed_data[:title], parsed_data[:vote_average], parsed_data[:id])
+    # Movie.new(result)
   end
 end
