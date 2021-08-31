@@ -86,6 +86,8 @@ http_interactions:
       - chunked
       Connection:
       - keep-alive
+      Date:
+      - Tue, 31 Aug 2021 18:09:59 GMT
       Server:
       - openresty
       Access-Control-Allow-Origin:
@@ -95,6 +97,8 @@ http_interactions:
       Access-Control-Expose-Headers:
       - ETag, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, Retry-After,
         Content-Length, Content-Range
+      Cache-Control:
+      - public, max-age=28800
       X-Memc:
       - HIT
       X-Memc-Key:
@@ -112,7 +116,7 @@ http_interactions:
       Vary:
       - Accept-Encoding
       X-Cache:
-      - Hit from cloudfront
+      - Miss from cloudfront
       Via:
       - 1.1 6152d4e35099aaa5ec23aec50cd7a8c5.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:

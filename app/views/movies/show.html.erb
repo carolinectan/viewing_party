@@ -15,9 +15,9 @@
 </h3>
 <hr><br>
 
-Total Reviews: <%= @reviews.count %>
+Total Reviews: <%= @movie.reviews.count %>
 
-<% @reviews.each do |review| %>
+<% @movie.reviews.each do |review| %>
   <div id="review-id-<%= review.id %>">
     <h3><%= review.author %></h3>
     <p>Rating: <%= review.rating %></p>

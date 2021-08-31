@@ -12,21 +12,32 @@ class MovieService < ApiService
     parsed_data = get_json(data)
 
     parsed_data[:results].map do |result|
-      Movie.new(result)
+      Movie.new(result, nil)
     end
   end
 
   def details(movie_id)
-    data = get_data("https://api.themoviedb.org/3/movie/#{movie_id}").get do |req|
+    movie_data = get_data("https://api.themoviedb.org/3/movie/#{movie_id}").get do |req|
       req.params['api_key'] = ENV['movie_api_key']
       req.params['language'] = 'en-US'
     end
 
-    parsed_data = get_json(data)
+    movie_parsed_data = get_json(movie_data)
+    movie_parsed_data[:genres] = get_genres(movie_parsed_data[:genres])
 
-    parsed_data[:genres] = get_genres(parsed_data[:genres])
+    reviews_data = get_data("https://api.themoviedb.org/3/movie/#{movie_id}/reviews").get do |req|
+      req.params['api_key'] = ENV['movie_api_key']
+      req.params['language'] = 'en-US'
+      req.params['page'] = 1
+    end
 
-    Movie.new(parsed_data)
+    reviews_parsed_data = get_json(reviews_data)
+
+    reviews = reviews_parsed_data[:results].map do |result|
+      Review.new(result)
+    end
+
+    Movie.new(movie_parsed_data, reviews)
   end
   
   def cast(movie_id)

@@ -5,15 +5,17 @@ class Movie
               :runtime,
               :genres,
               :summary,
-              :cast
+              :cast,
+              :reviews
 
-  def initialize(hash)
-    @title = hash[:title]
-    @vote_average = hash[:vote_average]
-    @id = hash[:id]
-    @runtime = hash[:runtime]
-    @genres = hash[:genres]
-    @summary = hash[:overview]
+  def initialize(movie_hash, reviews)
+    @title = movie_hash[:title]
+    @vote_average = movie_hash[:vote_average]
+    @id = movie_hash[:id]
+    @runtime = movie_hash[:runtime]
+    @genres = movie_hash[:genres]
+    @summary = movie_hash[:overview]
+    @reviews = reviews
     @cast = hash[:cast]
   end
 end
