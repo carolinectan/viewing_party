@@ -1,7 +1,7 @@
 <h1><%= @movie.title %>'s Details</h1>
 <hr><br>
 
-<%= button_to "Create a Viewing Party" %>
+<%= link_to "Create a Viewing Party", new_party_path %>
 <br>
 
 <h3>Runtime: <%= @movie.runtime %> minutes</h3>
