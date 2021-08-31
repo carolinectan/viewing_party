@@ -38,6 +38,7 @@ class MovieService < ApiService
     parsed_data = get_json(data)
 
     Movie.new(parsed_data)
+  end
 
   def get_genres(array)
     array.map do |genre|

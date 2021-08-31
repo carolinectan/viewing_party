@@ -10,6 +10,7 @@
 <h3>Summary: <%= @movie.summary %></h3>
 <h3>Cast: 
   <% @cast.each do |member| %>
+    <p><%= member[:name] %> as <%= member[:character] %></p>
   <% end %>
 </h3>
 <hr><br>
