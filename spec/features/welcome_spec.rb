@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'welcome page' do
   before :each do
-    visit "/"
+    visit root_path
   end
 
   describe 'welcome page message and description' do

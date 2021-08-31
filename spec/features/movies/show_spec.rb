@@ -11,7 +11,7 @@ RSpec.describe 'movies show page' do
       expect(page).to have_content("Summary: Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.")
     end
   end
-
+  
   it 'has a button to create a viewing party' do
     VCR.use_cassette('movie_reviews') do
       visit movie_path(436969)
@@ -19,11 +19,10 @@ RSpec.describe 'movies show page' do
       expect(page).to have_button("Create a Viewing Party")
     end
   end
-
+  
   describe 'reviews section' do
     it 'displays the total count of reviews' do
       VCR.use_cassette('movie_reviews') do
-
         visit movie_path(436969)
 
         expect(page).to have_content("Total Reviews: 4")
@@ -33,10 +32,17 @@ RSpec.describe 'movies show page' do
           expect(page).to have_content("Rating: 8.0")
           expect(page).to have_content("stayed true to the hype of the anti-hero teams in DC")
         end
-        # create movie
-        # allow movie facade to create movie and return movie that you create in test
-        # visit dynamic movie path
-        # pass the review.id in within block
+      end
+    end
+  end
+
+  describe 'cast section' do
+    it 'displays cast of movie' do
+      VCR.use_cassette('single_movie_cast_details') do
+        visit movie_path(436969)
+        save_and_open_page
+        expect(page).to have_content("Margot Robbie as Harleen Quinzel / Harley Quinn")
+        expect(page).to have_content("Michael Rooker as Brian Durlin / Savant")
       end
     end
   end
@@ -46,19 +52,7 @@ end
 # When I visit the movie's details page,
 # I should see
 #
-#  Button to create a viewing party
+# Button to create a viewing party
 # Details This button should take the authenticated user to the new event page
 #
-# And I should see the following information about the movie:
-#
-#  Movie Title
-#  Vote Average of the movie
-#  Runtime in hours & minutes
-#  Genere(s) associated to movie
-#  Summary description
-#  List the first 10 cast members (characters&actress/actors)
-
-
-#  Count of total reviews
-#  Each review's author and information
-# Details: This information should come from 3 different endpoints from The Movie DB API
+# List the first 10 cast members (characters&actress/actors)
