@@ -40,7 +40,7 @@ RSpec.describe 'movies show page' do
     it 'displays cast of movie' do
       VCR.use_cassette('single_movie_cast_details') do
         visit movie_path(436969)
-        
+        save_and_open_page
         expect(page).to have_content("Margot Robbie as Harleen Quinzel / Harley Quinn")
         expect(page).to have_content("Michael Rooker as Brian Durlin / Savant")
       end
