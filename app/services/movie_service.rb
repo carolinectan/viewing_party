@@ -39,6 +39,17 @@ class MovieService < ApiService
 
     Movie.new(movie_parsed_data, reviews)
   end
+  
+  def cast(movie_id)
+    data = get_data("https://api.themoviedb.org/3/movie/#{movie_id}/credits").get do |req|
+      req.params['api_key'] = ENV['movie_api_key']
+      req.params['language'] = 'en-US'
+    end
+
+    parsed_data = get_json(data)
+
+    Movie.new(parsed_data)
+  end
 
   def get_genres(array)
     array.map do |genre|

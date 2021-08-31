@@ -5,6 +5,7 @@ class Movie
               :runtime,
               :genres,
               :summary,
+              :cast,
               :reviews
 
   def initialize(movie_hash, reviews)
@@ -15,5 +16,6 @@ class Movie
     @genres = movie_hash[:genres]
     @summary = movie_hash[:overview]
     @reviews = reviews
+    @cast = hash[:cast]
   end
 end
