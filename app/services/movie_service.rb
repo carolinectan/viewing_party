@@ -45,22 +45,4 @@ class MovieService < ApiService
       genre[:name]
     end
   end
-
-  # def reviews(movie_id)
-  #   data = get_data("https://api.themoviedb.org/3/movie/#{movie_id}/reviews").get do |req|
-  #     req.params['api_key'] = ENV['movie_api_key']
-  #     req.params['language'] = 'en-US'
-  #     req.params['page'] = 1
-  #   end
-  #
-  #   parsed_data = get_json(data)
-  #
-  #   parsed_data[:results].map do |result|
-  #     Movie.new(result)
-  #   end
-  # end
-
-  # def get_rating(hash)
-  #   hash[:author_details][:rating]
-  # end
 end
