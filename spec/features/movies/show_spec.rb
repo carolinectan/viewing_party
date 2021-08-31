@@ -23,9 +23,7 @@ RSpec.describe 'movies show page' do
   describe 'reviews section' do
     it 'displays the total count of reviews' do
       VCR.use_cassette('movie_reviews') do
-
-      visit movie_path(436969)
-
+        visit movie_path(436969)
 
         expect(page).to have_content("Total Reviews: 4")
 
@@ -34,10 +32,6 @@ RSpec.describe 'movies show page' do
           expect(page).to have_content("Rating: 8.0")
           expect(page).to have_content("stayed true to the hype of the anti-hero teams in DC")
         end
-        # create movie
-        # allow movie facade to create movie and return movie that you create in test
-        # visit dynamic movie path
-        # pass the review.id in within block
       end
     end
   end
@@ -50,15 +44,4 @@ end
 # Button to create a viewing party
 # Details This button should take the authenticated user to the new event page
 #
-# And I should see the following information about the movie:
-#
-# Movie Title
-# Vote Average of the movie
-# Runtime in hours & minutes
-# Genere(s) associated to movie
-# Summary description
 # List the first 10 cast members (characters&actress/actors)
-
-# Count of total reviews
-# Each review's author and information
-# Details: This information should come from 3 different endpoints from The Movie DB API
