@@ -12,9 +12,7 @@ class Movie
     @vote_average = hash[:vote_average]
     @id = hash[:id]
     @runtime = hash[:runtime]
-    @genres = hash[:genres].map do |genre|
-      genre[:name]
-    end
+    @genres = hash[:genres]
     @summary = hash[:overview]
     @cast = hash[:cast]
   end

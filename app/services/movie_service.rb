@@ -10,7 +10,7 @@ class MovieService < ApiService
     end
 
     parsed_data = get_json(data)
-    
+
     parsed_data[:results].map do |result|
       Movie.new(result)
     end
@@ -24,6 +24,8 @@ class MovieService < ApiService
 
     parsed_data = get_json(data)
 
+    parsed_data[:genres] = get_genres(parsed_data[:genres])
+
     Movie.new(parsed_data)
   end
   
@@ -36,5 +38,10 @@ class MovieService < ApiService
     parsed_data = get_json(data)
 
     Movie.new(parsed_data)
+
+  def get_genres(array)
+    array.map do |genre|
+      genre[:name]
+    end
   end
 end
