@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
+  resources :parties, only: [:new, :create]
+  # get '/parties', to: 'parties#new'
+  # post '/parties', to: 'parties#create'
+
   get '/registration', to: 'users#new', as: :users
   post '/registration', to: 'users#create'
 

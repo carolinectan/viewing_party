@@ -6,26 +6,29 @@ RSpec.describe 'movies show page' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
   end
 
-  it 'displays movie details' do
-    VCR.use_cassette('single_movie_details') do
-      visit movie_path(436969)
-      expect(page).to have_content("The Suicide Squad's Details")
-      expect(page).to have_content('Runtime: 132 minutes')
-      expect(page).to have_content('Vote Average: 8.0')
-      expect(page).to have_content('Genres: Action, Adventure, Fantasy, Comedy')
-      expect(page).to have_content('Summary: Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.')
+  describe 'details API' do
+    it 'displays movie details' do
+      VCR.use_cassette('single_movie_details') do
+        visit movie_path(436969)
+        expect(page).to have_content("The Suicide Squad's Details")
+        expect(page).to have_content("Runtime: 132 minutes")
+        expect(page).to have_content("Vote Average: 8.0")
+        expect(page).to have_content("Genres: Action, Adventure, Fantasy, Comedy")
+        expect(page).to have_content("Summary: Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.")
+      end
+    end
+  
+    it 'has a button to create a viewing party' do
+      VCR.use_cassette('movie_reviews') do
+        visit movie_path(436969)
+  
+        click_on "Create a Viewing Party"
+        expect(current_path).to eq(new_party_path)
+      end
     end
   end
 
-  it 'has a button to create a viewing party' do
-    VCR.use_cassette('movie_reviews') do
-      visit movie_path(436969)
-
-      expect(page).to have_button('Create a Viewing Party')
-    end
-  end
-
-  describe 'reviews section' do
+  describe 'reviews API' do
     it 'displays the total count of reviews' do
       VCR.use_cassette('movie_reviews') do
         visit movie_path(436969)
@@ -41,7 +44,7 @@ RSpec.describe 'movies show page' do
     end
   end
 
-  describe 'cast section' do
+  describe 'cast API' do
     it 'displays cast of movie' do
       VCR.use_cassette('single_movie_cast_details') do
         visit movie_path(436969)
