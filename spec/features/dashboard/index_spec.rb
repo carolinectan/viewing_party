@@ -35,8 +35,12 @@ RSpec.describe 'Dashboard page' do
         end
       end
 
-      xit "displays a text field to enter a friend's email and a button to add friend" do
-        # allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      it "displays a text field to enter a friend's email and a button to add friend" do
+        user1 = User.create(email: 'ilovedogs@gmail.com', password: 'test1')
+        user2 = User.create(email: 'dogsrule@gmail.com', password: 'test2')
+
+        # stub lets you bypass logging in in tests
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
         # session user id - application controller
 
         visit dashboard_path
@@ -44,15 +48,15 @@ RSpec.describe 'Dashboard page' do
         within '#friends' do
           expect(page).to have_content('You currently have no friends')
 
-          fill_in "Friend's Email:", with: 'dogsrule@email.com'
+          fill_in :email, with: 'dogsrule@gmail.com'
 
           click_on 'Add Friend'
         end
 
-        expect(current_path).to eq(discover_path)
+        expect(current_path).to eq(dashboard_path)
 
         within '#friends' do
-          expect(page).to have_content('dogsrule@email.com')
+          expect(page).to have_content('dogsrule@gmail.com')
         end
       end
     end

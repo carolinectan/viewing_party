@@ -1,23 +1,45 @@
-<h1>Dashboard</h1>
-<hr>
-<%= link_to 'Discover Movies', discover_path %>
-<%= link_to 'Log Out', logout_path %>
+<% if current_user %>
+  <h1>Dashboard</h1>
+  <hr>
+  <%= link_to 'Discover Movies', discover_path %>
+  <%= link_to 'Log Out', logout_path %>
 
-<br>
+  <br>
 
-<section id="friends">
-  <h2>Friends</h2>
-</section>
+  <section id="friends">
+    <h2>Friends</h2>
+    <%= form_with url: '/friendships', method: :post, local: true do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.label :email, "Friend's Email:" %>
+      <%= f.text_field :email %>
+      <%= f.submit 'Add Friend' %>
+    <% end %>
 
-<section id="viewing-parties">
-  <h2>Viewing Parties</h2>
-  <div id="my-parties">
-    <p>My Parties</p>
-  </div>
 
-  <div id="party-invites">
-    <p>Viewing Party Invites</p>
-  </div>
-</section>
+    <% if !current_user.friendships.empty? %>
+      <% @friends.each do |friend| %>
+        <div id="user-<%= friend.id%>">
+          <%= friend.email %>
+          <% end %>
+        </div>
+    <% else %>
+      <p>You currently have no friends.</p>
+    <% end %>
+  </section>
 
-<hr><br>
+  <section id="viewing-parties">
+    <h2>Viewing Parties</h2>
+    <div id="my-parties">
+      <p>My Parties</p>
+    </div>
+
+    <div id="party-invites">
+      <p>Viewing Party Invites</p>
+    </div>
+  </section>
+
+  <hr><br>
+<% else %>
+  <% flash[:error] = "Sorry, you are not allowed to access this page. Please log in." %>
+  <% redirect_to login_path %>
+<% end %>

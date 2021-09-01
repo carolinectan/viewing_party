@@ -10,8 +10,12 @@ Rails.application.routes.draw do
   post '/registration', to: 'users#create'
 
   get '/dashboard', to: 'dashboard#index'
+
   get '/discover', to: 'discover#index'
 
   get '/movies', to: 'movies#index'
   get '/movies/:id', to: 'movies#show', as: :movie
+
+  # get 'friendships', to: 'friendships#new'
+  post 'friendships', to: 'friendships#create'
 end
