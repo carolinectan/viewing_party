@@ -5,13 +5,13 @@ class PartiesController < ApplicationController
   end
 
   def create
-    @party = Party.create(party_params)
+    @party = current_user.parties.create(party_params)
     redirect_to dashboard_path
   end
 
   private
 
   def party_params
-    params.permit(:duration, :date, :start_time, :movie_id)
+    params.require(:party).permit(:duration, :date, :start_time, :movie_id, :user_id)
   end
 end

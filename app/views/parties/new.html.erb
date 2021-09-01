@@ -1,18 +1,34 @@
-<h1>New Party</h1>
-<hr><br>
+<% if current_user %>
+  <h1>New Party</h1>
+  <hr><br>
 
-<h2>Movie Title: <%= @movie.title %>
-<br>
+  <h2>Movie Title: <%= @movie.title %></h2>
+  <br>
 
-<section id="new_party">
-  <%= form_with model: @party, local: true do |f| %>
-    <%= f.hidden_field :movie_id, value: @movie.id %>
-    <%= f.label :duration, 'Duration:' %>
-    <%= f.text_field :duration, id: :duration, value: @movie.runtime %>
-    <%= f.label :date, 'When:' %>
-    <%= f.date_select :date, id: :date %>
-    <%= f.label :start_time, 'Start Time:' %>
-    <%= f.time_select :start_time, id: :start_time %>
-    <%= f.submit 'Create Party' %>
-  <% end %>
-</section>
+  <section id="new_party">
+    <%= form_with model: @party, local: true do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :movie_id, value: @movie.id %>
+      <br>
+      <%= f.label :duration, 'Duration:' %>
+      <%= f.text_field :duration, id: :duration, value: @movie.runtime %>
+      <br>
+      <%= f.label :date, 'When:' %>
+      <%= f.date_select :date, id: :date %>
+      <br>
+      <%= f.label :start_time, 'Start Time:' %>
+      <%= f.time_select :start_time, id: :start_time %>
+      <br>
+      <%= f.label :invite_friends %>
+      <%= f.collection_check_boxes :attendees, current_user.friends, :id, :email do |b| %>
+        <div>
+          <p><%= b.check_box %> <%= b.label %></p>
+        </div>
+      <% end %>
+      <br>
+      <%= f.submit 'Create Party' %>
+    <% end %>
+  </section>
+<% else %>
+  <%= render 'partials/login_redirect' %>
+<% end %>

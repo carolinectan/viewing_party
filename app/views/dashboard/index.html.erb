@@ -28,11 +28,32 @@
   <section id='viewing-parties'>
     <h2>Viewing Parties</h2>
     <div id='my-parties'>
-      <p>My Parties</p>
+      <h3>My Parties</h3>
+      <% current_user.parties.each do |party| %>
+        <p>Date: <%= party.date %></p>
+        <p>Time: <%= party.duration %></p>
+        <p>You are the host!</p>
+        <p>Attendees:</p>
+        <% party.attendees.each do |attendee| %>
+          <p><%= attendee.user.email unless attendee.user.email == current_user.email %></p>
+        <% end %>
+      <% end %>
     </div>
 
     <div id='party-invites'>
-      <p>Viewing Party Invites</p>
+      <h3>Viewing Party Invites</h3>
+      <!--
+      <% current_user.parties.each do |party| %>
+        <p>Date: <%= party.date %></p>
+        <p>Time: <%= party.duration %></p>
+        <p>Host: <%= party.user.email %></p>
+        <p>Attendees:</p>
+        <% party.attendees.each do |attendee| %>
+          <p><%= attendee.user.email unless attendee.user.email == current_user.email %></p>
+        <% end %>
+        <p><b><%= current_user.email %></b></p>
+      <% end %>
+      -->
     </div>
   </section>
 
