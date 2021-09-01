@@ -22,7 +22,6 @@ RSpec.describe "new Party page" do
         end
         
         expect(current_path).to eq(dashboard_path)
-        save_and_open_page
       end
     end
   end
