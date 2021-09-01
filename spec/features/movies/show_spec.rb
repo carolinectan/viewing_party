@@ -17,11 +17,11 @@ RSpec.describe 'movies show page' do
         expect(page).to have_content("Summary: Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.")
       end
     end
-  
+
     it 'has a button to create a viewing party' do
-      VCR.use_cassette('movie_reviews') do
+      VCR.use_cassette('single_movie_details') do
         visit movie_path(436969)
-  
+
         click_on "Create a Viewing Party"
         expect(current_path).to eq(new_party_path)
       end
@@ -46,14 +46,16 @@ RSpec.describe 'movies show page' do
 
   describe 'cast API' do
     it 'displays cast of movie' do
-      VCR.use_cassette('single_movie_cast_details') do
+      VCR.use_cassette('single_movie_details') do
         visit movie_path(436969)
 
-        within '#cast' do
-          expect(page).to have_content('Margot Robbie as Harleen Quinzel / Harley Quinn')
-          expect(page).to have_content('Michael Rooker as Brian Durlin / Savant')
+        VCR.use_cassette('single_movie_cast_details') do
+          within '#cast' do
+            expect(page).to have_content('Margot Robbie as Harleen Quinzel / Harley Quinn')
+            expect(page).to have_content('Michael Rooker as Brian Durlin / Savant')
 
-          expect(page).to have_css('p', :count => 10)
+            expect(page).to have_css('p', :count => 10)
+          end
         end
       end
     end

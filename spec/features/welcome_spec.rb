@@ -11,7 +11,7 @@ RSpec.describe 'welcome page' do
     end
 
     it 'has a welcome description' do
-      expect(page).to have_content('Where you view movies with your friends')
+      expect(page).to have_content('Where you can search for top movies and create events to view movies with your friends!')
     end
   end
 
