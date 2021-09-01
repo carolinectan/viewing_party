@@ -16,7 +16,7 @@ RSpec.describe 'logging in' do
     click_on 'Log In'
 
     expect(current_path).to eq(dashboard_path)
-
+save_and_open_page
     expect(page).to have_content("Welcome, #{@user.email}!")
     expect(page).to_not have_link('Log In')
     expect(page).to_not have_link('Register')
