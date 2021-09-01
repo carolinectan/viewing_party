@@ -3,8 +3,10 @@ require 'rails_helper'
 RSpec.describe "new Party page" do
   describe 'features' do
     before :each do
-      user = User.create(email: 'ilovedogs@gmail.com', password: 'test')
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      @user1 = User.create(email: 'ilovedogs@gmail.com', password: 'test')
+      @user2 = User.create(email: 'dogsrule@gmail.com', password: 'test2')
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
+      Friendship.create(user_id: @user1.id, friend_id: @user2.id)
     end
     
     it 'allows creation of new viewing party' do
@@ -15,9 +17,10 @@ RSpec.describe "new Party page" do
         expect(current_path).to eq(new_party_path)
 
         within("#new_party") do
+          find(:css, "#party_attendees_#{@user2.id}").set(true)
           click_on "Create Party"
         end
-        
+        save_and_open_page
         expect(current_path).to eq(dashboard_path)
       end
     end
