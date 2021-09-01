@@ -20,8 +20,9 @@ RSpec.describe "new Party page" do
           find(:css, "#party_attendees_#{@user2.id}").set(true)
           click_on "Create Party"
         end
-        save_and_open_page
+        
         expect(current_path).to eq(dashboard_path)
+        save_and_open_page
       end
     end
   end
