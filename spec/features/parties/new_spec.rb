@@ -2,10 +2,15 @@ require 'rails_helper'
 
 RSpec.describe "new Party page" do
   describe 'features' do
+    before :each do
+      user = User.create(email: 'ilovedogs@gmail.com', password: 'test')
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    end
+    
     it 'allows creation of new viewing party' do
       VCR.use_cassette('single_movie_details') do
         visit movie_path(436969)
-  
+        
         click_on "Create a Viewing Party"
         expect(current_path).to eq(new_party_path)
 
