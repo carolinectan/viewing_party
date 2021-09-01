@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :parties, only: [:new, :create]
+  # get '/parties', to: 'parties#new'
+  # post '/parties', to: 'parties#create'
 
   get '/login', to: 'users#login_form'
   post '/login', to: 'users#login'
