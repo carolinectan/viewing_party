@@ -30,7 +30,7 @@ RSpec.describe 'Dashboard page' do
     end
 
     describe 'Friends' do
-      it 'displays a friends section' do
+      it 'displays a friends section for an authenticated user' do
         user = User.create(email: 'ilovedogs@gmail.com', password: 'test1')
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -41,13 +41,13 @@ RSpec.describe 'Dashboard page' do
         end
       end
 
-      it "displays a text field to enter a friend's email and a button to add friend" do
+      it "displays a text field to enter a friend's email and a button to add friend for an authenticated user" do
         user1 = User.create(email: 'ilovedogs@gmail.com', password: 'test1')
         user2 = User.create(email: 'dogsrule@gmail.com', password: 'test2')
+        user3 = User.create(email: 'ilovecats@gmail.com', password: 'test3')
 
         # stub lets you bypass logging in in tests
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
-        # session user id - application controller
 
         visit dashboard_path
 
@@ -64,9 +64,24 @@ RSpec.describe 'Dashboard page' do
         within '#friends' do
           expect(page).to have_content('dogsrule@gmail.com')
         end
+
+        within '#friends' do
+          expect(page).to_not have_content('You currently have no friends')
+
+          fill_in :email, with: 'ilovecats@gmail.com'
+
+          click_on 'Add Friend'
+        end
+
+        expect(current_path).to eq(dashboard_path)
+
+        within '#friends' do
+          expect(page).to have_content('dogsrule@gmail.com')
+          expect(page).to have_content('ilovecats@gmail.com')
+        end
       end
 
-      it 'redirects unauthorized user to login page' do
+      it 'redirects unauthenticated user to login page' do
         visit dashboard_path
 
         expect(current_path).to eq(dashboard_path)
@@ -75,24 +90,10 @@ RSpec.describe 'Dashboard page' do
       end
     end
 
-    # As an authenticated user,
-    # I see a section for friends,
-    # In this section, there should be a text field to enter a friend's email and a button to "Add Friend"
-    #
-    # Scenarios:
-    #
-    # If I have not added any friends there should be a message. "You currently have no friends".
-    #
-    # If I have added friends, I should see a list of all my friends.
-    #
-    # Details: Users should be able to add a friend by their email address, as long as, the friend is a user of our application and exists in our database.
-    #
     # Example:
     # Bugs Bunny and Lola Bunny are users of our application, but Daffy Duck is not.
     #
-    # When Bugs Bunny enters lola_bunny@gmail.com to add friend it will be successful and Lola should show up as Bugs Bunny's friend.
     # When Bugs Bunny enters daffy_duck@gmail.com to add friend it should give an error message that the user does not exist.
-    # Tips: You'll want to research self-referential has_many through. Here is a good starting point to understand the concept. You will probably need to do more googling but that's part of the fun ;)
     #
     #  Write a happy path test
     #  Write a sad path test
