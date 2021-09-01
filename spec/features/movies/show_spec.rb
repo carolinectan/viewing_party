@@ -50,7 +50,7 @@ RSpec.describe 'movies show page' do
           expect(page).to have_content('Margot Robbie as Harleen Quinzel / Harley Quinn')
           expect(page).to have_content('Michael Rooker as Brian Durlin / Savant')
 
-          expect(page).to have_css("p", :count => 10)
+          expect(page).to have_css('p', :count => 10)
         end
       end
     end

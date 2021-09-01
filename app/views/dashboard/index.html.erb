@@ -5,7 +5,7 @@
   <%= link_to 'Log Out', logout_path %>
   <br>
 
-  <section id="friends">
+  <section id='friends'>
     <h2>Friends</h2>
     <%= form_with url: '/friendships', method: :post, local: true do |f| %>
       <%= f.hidden_field :user_id, value: current_user.id %>
@@ -16,7 +16,7 @@
 
     <% if !current_user.friendships.empty? %>
       <% @friends.each do |friend| %>
-        <div id="user-<%= friend.id%>">
+        <div id='user-<%= friend.id%>'>
           <%= friend.email %>
           <% end %>
         </div>
@@ -25,13 +25,13 @@
     <% end %>
   </section>
 
-  <section id="viewing-parties">
+  <section id='viewing-parties'>
     <h2>Viewing Parties</h2>
-    <div id="my-parties">
+    <div id='my-parties'>
       <p>My Parties</p>
     </div>
 
-    <div id="party-invites">
+    <div id='party-invites'>
       <p>Viewing Party Invites</p>
     </div>
   </section>

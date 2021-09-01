@@ -14,7 +14,7 @@ RSpec.describe 'Movies index page' do
         expect(page).to have_content('Top 40 Movies')
 
         within '#top-40' do
-          expect(page).to have_css("div", :count => 40)
+          expect(page).to have_css('div', :count => 40)
         end
 
         within '#movie-id-436969' do
