@@ -1,11 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe 'Movies index page' do
+  before :each do
+    user = User.create(email: 'ilovedogs@gmail.com', password: 'test')
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+  end
+
   describe 'features' do
     it 'displays top 40 results from search' do
-      user = User.create(email: 'ilovedogs@gmail.com', password: 'test')
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
       VCR.use_cassette('movie_details') do
         visit movies_path
 
@@ -28,9 +30,6 @@ RSpec.describe 'Movies index page' do
     end
 
     it 'displays a Find Top Rated Movies button' do
-      user = User.create(email: 'ilovedogs@gmail.com', password: 'test')
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
       VCR.use_cassette('movie_details') do
         visit movies_path
 
@@ -41,9 +40,6 @@ RSpec.describe 'Movies index page' do
 
   describe 'navigation' do
     it 'links to movie show page through movie title' do
-      user = User.create(email: 'ilovedogs@gmail.com', password: 'test')
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
       VCR.use_cassette('movie_details') do
         visit movies_path
 
