@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Dashboard page' do
   describe 'navigation' do
     it 'links to Discover page' do
-      user = User.create(email: 'ilovedogs@gmail.com', password: 'test1')
+      user = User.create(email: 'ilovedogs@gmail.com', password: 'test')
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit dashboard_path
@@ -31,7 +31,7 @@ RSpec.describe 'Dashboard page' do
 
     describe 'Friends' do
       it 'displays a friends section for an authenticated user' do
-        user = User.create(email: 'ilovedogs@gmail.com', password: 'test1')
+        user = User.create(email: 'ilovedogs@gmail.com', password: 'test')
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
         visit dashboard_path
@@ -42,7 +42,7 @@ RSpec.describe 'Dashboard page' do
       end
 
       it "displays a text field to enter a friend's email and a button to add friend for an authenticated user" do
-        user1 = User.create(email: 'ilovedogs@gmail.com', password: 'test1')
+        user1 = User.create(email: 'ilovedogs@gmail.com', password: 'test')
         user2 = User.create(email: 'dogsrule@gmail.com', password: 'test2')
         user3 = User.create(email: 'ilovecats@gmail.com', password: 'test3')
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
@@ -80,7 +80,7 @@ RSpec.describe 'Dashboard page' do
       end
 
       it "displays an error message if an authenticated user tries to add a friend that doesn't exist in the database" do
-        user = User.create(email: 'ilovedogs@gmail.com', password: 'test1')
+        user = User.create(email: 'ilovedogs@gmail.com', password: 'test')
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
         visit dashboard_path
@@ -112,7 +112,7 @@ RSpec.describe 'Dashboard page' do
 
     context 'Viewing Parties' do
       before :each do
-        user = User.create(email: 'ilovedogs@gmail.com', password: 'test1')
+        user = User.create(email: 'ilovedogs@gmail.com', password: 'test')
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
         visit dashboard_path

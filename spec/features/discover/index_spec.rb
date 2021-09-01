@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Discover index page" do
   describe 'features' do
     it 'contains button to discover top 40 movies' do
-      user = User.create(email: 'ilovedogs@gmail.com', password: 'test1')
+      user = User.create(email: 'ilovedogs@gmail.com', password: 'test')
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit discover_path
@@ -12,7 +12,7 @@ RSpec.describe "Discover index page" do
     end
 
     it 'discover button visits movies_path' do
-      user = User.create(email: 'ilovedogs@gmail.com', password: 'test1')
+      user = User.create(email: 'ilovedogs@gmail.com', password: 'test')
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       VCR.use_cassette('movie_details') do

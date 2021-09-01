@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'movies show page' do
+  before :each do
+    user = User.create(email: 'ilovedogs@gmail.com', password: 'test')
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+  end
+
   it 'displays movie details' do
     VCR.use_cassette('single_movie_details') do
       visit movie_path(436969)
@@ -48,10 +53,6 @@ RSpec.describe 'movies show page' do
   end
 end
 
-# As an authenticated user,
-# When I visit the movie's details page,
-# I should see
-#
 # Button to create a viewing party
 # Details This button should take the authenticated user to the new event page
 #
