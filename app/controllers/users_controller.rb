@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     new_user = User.create(user_params)
     flash[:success] = "Welcome, #{new_user.email}!"
 
-    redirect_to dashboard_path
+    redirect_to '/dashboard'
   end
 
   private
