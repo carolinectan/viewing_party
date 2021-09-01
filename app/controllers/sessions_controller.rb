@@ -3,10 +3,11 @@ class SessionsController < ApplicationController
 
   def create
     found_user = User.find_by(email: params[:email])
+
     if found_user.authenticate(params[:password])
       session[:user_id] = found_user.id
+      redirect_to '/dashboard'
       flash[:success] = "Welcome, #{found_user.email}!"
-      redirect_to dashboard_path
     else
       flash[:error] = 'Sorry, your credentials were bad. Try again.'
       # render :login_form
