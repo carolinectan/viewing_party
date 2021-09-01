@@ -29,3 +29,65 @@ footer {
   align-self: baseline;
   flex-direction: row;
 }
+
+nav {
+  font-size: 28px;
+  color: white;
+}
+
+h1 {
+  font-size: 2em;
+  padding: 10px;
+  margin: 20px auto;
+  width: 80%;
+  display: block;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+h2 {
+  margin: 2px auto;
+  padding: 2px;
+  width: 80%;
+  display: block;
+  text-align: center;
+  font-size: 1.5em;
+  text-transform: capitalize;
+}
+
+h3 {
+  margin: 2px auto;
+  padding: 5px;
+  width: 80%;
+  color: #535FA6;
+  font-size: 1.2em;
+  text-transform: capitalize;
+  background-color: #C3E09F;
+  border-radius: 5px;
+}
+
+p {
+  margin: 0px auto 20px auto;
+  padding: 5px;
+  width: 80%;
+  display: block;
+  text-align: center;
+  font-size: 1em;
+}
+
+p a {
+  text-decoration: none;
+  text-transform: capitalize;
+  border-radius: 5px;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  text-transform: capitalize;
+  border-radius: 5px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
