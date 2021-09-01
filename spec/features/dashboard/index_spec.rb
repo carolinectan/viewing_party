@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe "Dashboard page" do
-  describe "navigation" do
+RSpec.describe 'Dashboard page' do
+  describe 'navigation' do
     it 'links to Discover page' do
       visit dashboard_path
 
-      click_on "Discover Movies"
+      click_on 'Discover Movies'
 
       expect(current_path).to eq(discover_path)
     end
@@ -26,12 +26,12 @@ RSpec.describe "Dashboard page" do
       expect(page).to have_content("Welcome, #{user.email}!")
     end
 
-    context "Friends" do
+    describe 'Friends' do
       it 'displays friends of user' do
         visit dashboard_path
 
-        within "#friends" do
-          expect(page).to have_content("Friends")
+        within '#friends' do
+          expect(page).to have_content('Friends')
         end
       end
 
@@ -41,16 +41,17 @@ RSpec.describe "Dashboard page" do
 
         visit dashboard_path
 
-        within "#friends" do
+        within '#friends' do
           expect(page).to have_content('You currently have no friends')
 
           fill_in "Friend's Email:", with: 'dogsrule@email.com'
-          click_on "Add Friend"
+
+          click_on 'Add Friend'
         end
 
         expect(current_path).to eq(discover_path)
 
-        within "#friends" do
+        within '#friends' do
           expect(page).to have_content('dogsrule@email.com')
         end
       end

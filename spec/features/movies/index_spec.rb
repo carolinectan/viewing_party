@@ -1,25 +1,25 @@
 require 'rails_helper'
 
-RSpec.describe "Movies index page" do
+RSpec.describe 'Movies index page' do
   describe 'features' do
     it 'displays top 40 results from search' do
       VCR.use_cassette('movie_details') do
         visit movies_path
 
-        expect(page).to have_content("Top 40 Movies")
+        expect(page).to have_content('Top 40 Movies')
 
-        within "#top-40" do
+        within '#top-40' do
           expect(page).to have_css("div", :count => 40)
         end
 
-        within "#movie-id-436969" do
-          expect(page).to have_content("The Suicide Squad")
-          expect(page).to have_content("Vote Average: 8")
+        within '#movie-id-436969' do
+          expect(page).to have_content('The Suicide Squad')
+          expect(page).to have_content('Vote Average: 8')
         end
 
-        within "#movie-id-460465" do
-          expect(page).to have_content("Mortal Kombat")
-          expect(page).to have_content("Vote Average: 7.4")
+        within '#movie-id-460465' do
+          expect(page).to have_content('Mortal Kombat')
+          expect(page).to have_content('Vote Average: 7.4')
         end
       end
     end
@@ -31,7 +31,7 @@ RSpec.describe "Movies index page" do
         visit movies_path
 
         VCR.use_cassette('single_movie_details') do
-          within "#movie-id-436969" do
+          within '#movie-id-436969' do
             click_on "The Suicide Squad"
           end
         end
