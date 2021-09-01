@@ -1,5 +1,5 @@
 class MovieService < ApiService
-  def top_40
+  def top40
     (top_movies(1) + top_movies(2)).flatten
   end
 

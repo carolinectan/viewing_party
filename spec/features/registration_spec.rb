@@ -8,7 +8,7 @@ RSpec.describe 'user registration form' do
   it 'creates new user' do
     click_on 'Register'
 
-    expect(current_path).to eq('/registration')
+    expect(current_path).to eq(users_path)
 
     email = 'ilovedogs@gmail.com'
     password = 'test'
@@ -22,7 +22,7 @@ RSpec.describe 'user registration form' do
   end
 
   it 'redirects to dashboard page after user registers' do
-    visit '/registration'
+    visit users_path
 
     email = 'ilovedogs@gmail.com'
     password = 'test'
@@ -32,7 +32,7 @@ RSpec.describe 'user registration form' do
 
     click_on 'Register'
 
-    expect(current_path).to eq('/dashboard')
+    expect(current_path).to eq(dashboard_path)
   end
 
   # Add sad path test for if a user already exists, plus message.

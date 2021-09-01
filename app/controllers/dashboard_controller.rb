@@ -1,3 +1,5 @@
 class DashboardController < ApplicationController
-  def index; end
+  def index
+    @friends = current_user.friends.reload if current_user
+  end
 end

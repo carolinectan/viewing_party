@@ -16,7 +16,6 @@ class Movie
     @genres = movie_hash[:genres]
     @summary = movie_hash[:overview]
     @reviews = reviews
-    # @cast = hash[:cast]
     @cast = cast
   end
 end

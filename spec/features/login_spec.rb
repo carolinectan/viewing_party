@@ -1,36 +1,55 @@
 require 'rails_helper'
 
 RSpec.describe 'logging in' do
-  before :each do
-    @user = User.create(email: 'ilovedogs@gmail.com', password: 'test')
+  describe 'happy path' do
+    it 'can log in with valid credentials' do
+      @user = User.create(email: 'ilovedogs@gmail.com', password: 'test')
+
+      visit root_path
+
+      click_on 'Log In'
+
+      expect(current_path).to eq(login_path)
+
+      fill_in :email, with: @user.email
+      fill_in :password, with: @user.password
+
+      click_on 'Log In'
+
+      expect(current_path).to eq(dashboard_path)
+
+      expect(page).to have_content("Welcome, #{@user.email}!")
+      expect(page).to_not have_link('Log In')
+      expect(page).to_not have_link('Register')
+      expect(page).to have_link('Log Out')
+
+      click_link 'Log Out'
+
+      expect(current_path).to eq(root_path)
+      expect(page).to have_link('Log In')
+      expect(page).to have_link('Register')
+      expect(page).to_not have_link('Log Out')
+    end
   end
 
-  it 'can log in with valid credentials' do
-    visit root_path
+  describe 'sad path' do
+    it 'cannot log in with bad credentials' do
+      @user = User.create(email: 'ilovedogs@gmail.com', password: 'test')
 
-    click_on 'Log In'
+      visit root_path
 
-    expect(current_path).to eq(login_path)
+      click_on 'Log In'
 
-    fill_in :email, with: @user.email
-    fill_in :password, with: @user.password
+      expect(current_path).to eq(login_path)
 
-    click_on 'Log In'
+      fill_in :email, with: @user.email
+      fill_in :password, with: 'incorrect password'
 
-    expect(current_path).to eq(dashboard_path)
-    expect(page).to have_content("Welcome, #{@user.email}!")
-  end
+      click_on 'Log In'
 
-  it "cannot log in with bad credentials" do
-    visit login_path
+      expect(current_path).to eq(login_path)
 
-    fill_in :email, with: @user.email
-    fill_in :password, with: "incorrect password"
-
-    click_on "Log In"
-
-    expect(current_path).to eq(login_path)
-
-    expect(page).to have_content("Sorry, your credentials are bad.")
+      expect(page).to have_content('Sorry, your credentials were bad. Try again.')
+    end
   end
 end

@@ -1,22 +1,42 @@
-<h1>Dashboard</h1>
-<hr>
-<%= link_to "Discover Movies", discover_path %>
-<br>
+<% if current_user %>
+  <h1>Dashboard</h1>
+  <hr>
+  <%= link_to 'Discover Movies', discover_path %>
+  <%= link_to 'Log Out', logout_path %>
+  <br>
 
-<section id="friends">
-  <h2>Friends</h2>
-  <!-- form to add friend -->
-</section>
+  <section id='friends'>
+    <h2>Friends</h2>
+    <%= form_with url: '/friendships', method: :post, local: true do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.label :email, "Friend's Email:" %>
+      <%= f.text_field :email %>
+      <%= f.submit 'Add Friend' %>
+    <% end %>
 
-<section id="viewing-parties">
-  <h2>Viewing Parties</h2>
-  <div id="my-parties">
-    <p>My Parties</p>
-  </div>
+    <% if !current_user.friendships.empty? %>
+      <% @friends.each do |friend| %>
+        <div id='user-<%= friend.id%>'>
+          <%= friend.email %>
+          <% end %>
+        </div>
+    <% else %>
+      <p>You currently have no friends.</p>
+    <% end %>
+  </section>
 
-  <div id="party-invites">
-    <p>Viewing Party Invites</p>
-  </div>
-</section>
+  <section id='viewing-parties'>
+    <h2>Viewing Parties</h2>
+    <div id='my-parties'>
+      <p>My Parties</p>
+    </div>
 
-<hr><br>
+    <div id='party-invites'>
+      <p>Viewing Party Invites</p>
+    </div>
+  </section>
+
+  <hr><br>
+<% else %>
+  <%= render 'partials/login_redirect' %>
+<% end %>
