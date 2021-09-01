@@ -3,7 +3,6 @@
   <hr>
   <%= link_to 'Discover Movies', discover_path %>
   <%= link_to 'Log Out', logout_path %>
-
   <br>
 
   <section id="friends">
@@ -14,7 +13,6 @@
       <%= f.text_field :email %>
       <%= f.submit 'Add Friend' %>
     <% end %>
-
 
     <% if !current_user.friendships.empty? %>
       <% @friends.each do |friend| %>
@@ -39,7 +37,7 @@
   </section>
 
   <hr><br>
+
 <% else %>
-  <% flash[:error] = "Sorry, you are not allowed to access this page. Please log in." %>
-  <% redirect_to login_path %>
+  <%= render 'partials/login_redirect' %>
 <% end %>
