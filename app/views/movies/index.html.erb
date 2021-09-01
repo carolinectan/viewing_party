@@ -1,13 +1,19 @@
-<h1>Movies</h1>
-<hr><br>
+<% if current_user %>
+  <h1>Movies</h1>
+  <hr><br>
 
-<section id="top-40">
-  <h2>Top 40 Movies</h2>
-  <% @movies.each do |movie| %>
-    <div id="movie-id-<%= movie.id %>">
-      <h3><%= link_to "#{movie.title}", "/movies/#{movie.id}" %></h3>
-      <p>Vote Average: <%= movie.vote_average %></p>
-    </div>
-    <br>
-  <% end %>
-</section>
+  <%= button_to "Discover Top Rated Movies", movies_path, method: :get %>
+
+  <section id="top-40">
+    <h2>Top 40 Movies</h2>
+    <% @movies.each do |movie| %>
+      <div id="movie-id-<%= movie.id %>">
+        <h3><%= link_to "#{movie.title}", "/movies/#{movie.id}" %></h3>
+        <p>Vote Average: <%= movie.vote_average %></p>
+      </div>
+      <br>
+    <% end %>
+  </section>
+<% else %>
+  <%= render 'partials/login_redirect' %>
+<% end %>

@@ -3,6 +3,9 @@ require 'rails_helper'
 RSpec.describe 'Movies index page' do
   describe 'features' do
     it 'displays top 40 results from search' do
+      user = User.create(email: 'ilovedogs@gmail.com', password: 'test1')
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
       VCR.use_cassette('movie_details') do
         visit movies_path
 
@@ -23,10 +26,24 @@ RSpec.describe 'Movies index page' do
         end
       end
     end
+
+    it 'displays a Find Top Rated Movies button' do
+      user = User.create(email: 'ilovedogs@gmail.com', password: 'test1')
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      VCR.use_cassette('movie_details') do
+        visit movies_path
+
+        expect(page).to have_button('Discover Top Rated Movies')
+      end
+    end
   end
 
   describe 'navigation' do
     it 'links to movie show page through movie title' do
+      user = User.create(email: 'ilovedogs@gmail.com', password: 'test1')
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
       VCR.use_cassette('movie_details') do
         visit movies_path
 
@@ -42,15 +59,10 @@ RSpec.describe 'Movies index page' do
   end
 end
 
-# [ ] As an authenticated user
-# [ ] When I visit the movies page,
-# [x] I should see the 40 results from my search,
-# [ ] I should also see the "Find Top Rated Movies" button
 # [ ] and the Find Movies form at the top of the page.
-
 # [ ] Details: The results from the search should appear on this page,
 # [ ] and there should only be a maximum of 40 results.
-# [ ] The following details should be listed for each movie.
 
-# [x] Title (As a Link to the Movie Details page)
-# [x] Vote Average of the movie
+# [ ] The following details should be listed for each movie.
+# [ ] Title (As a Link to the Movie Details page)
+# [ ] Vote Average of the movie
