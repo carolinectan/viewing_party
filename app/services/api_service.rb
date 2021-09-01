@@ -1,6 +1,6 @@
 class ApiService
   def get_data(endpoint)
-    response = Faraday.new(endpoint)
+    Faraday.new(endpoint)
   end
 
   def get_json(response)

@@ -1,5 +1,6 @@
 class PartiesController < ApplicationController
   def new
+    @party = Party.new
     @movie = MovieService.new.details(params[:movie_id])
   end
 

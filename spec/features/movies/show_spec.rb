@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'movies show page' do
+  before :each do
+    user = User.create(email: 'ilovedogs@gmail.com', password: 'test')
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+  end
+
   describe 'details API' do
     it 'displays movie details' do
       VCR.use_cassette('single_movie_details') do
@@ -28,12 +33,12 @@ RSpec.describe 'movies show page' do
       VCR.use_cassette('movie_reviews') do
         visit movie_path(436969)
 
-        expect(page).to have_content("Total Reviews: 4")
+        expect(page).to have_content('Total Reviews: 4')
 
-        within "#review-id-61048d3d688cd0007f215a28" do
-          expect(page).to have_content("Peter89Spencer")
-          expect(page).to have_content("Rating: 8.0")
-          expect(page).to have_content("stayed true to the hype of the anti-hero teams in DC")
+        within '#review-id-61048d3d688cd0007f215a28' do
+          expect(page).to have_content('Peter89Spencer')
+          expect(page).to have_content('Rating: 8.0')
+          expect(page).to have_content('stayed true to the hype of the anti-hero teams in DC')
         end
       end
     end
@@ -44,17 +49,17 @@ RSpec.describe 'movies show page' do
       VCR.use_cassette('single_movie_cast_details') do
         visit movie_path(436969)
 
-        expect(page).to have_content("Margot Robbie as Harleen Quinzel / Harley Quinn")
-        expect(page).to have_content("Michael Rooker as Brian Durlin / Savant")
+        within '#cast' do
+          expect(page).to have_content('Margot Robbie as Harleen Quinzel / Harley Quinn')
+          expect(page).to have_content('Michael Rooker as Brian Durlin / Savant')
+
+          expect(page).to have_css('p', :count => 10)
+        end
       end
     end
   end
 end
 
-# As an authenticated user,
-# When I visit the movie's details page,
-# I should see
-#
 # Button to create a viewing party
 # Details This button should take the authenticated user to the new event page
 #

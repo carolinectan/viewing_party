@@ -5,7 +5,7 @@
 <br>
 
 <section id="new_party">
-  <%= form_with url: parties_path, local: true do |f| %>
+  <%= form_with model: @party, local: true do |f| %>
     <%= f.hidden_field :movie_id, value: @movie.id %>
     <%= f.label :duration, 'Duration:' %>
     <%= f.text_field :duration, id: :duration, value: @movie.runtime %>
