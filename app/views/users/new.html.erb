@@ -1,7 +1,9 @@
-<%= form_with model: @user, local: true do |f| %>
-  <%= f.label :email, 'Email:' %>
-  <%= f.text_field :email, id: :user_email %>
-  <%= f.label :password, 'Password:' %>
-  <%= f.password_field :password, id: :user_password %>
-  <%= f.submit 'Register' %>
-<% end %>
+<div id="register-user">
+  <%= form_with model: @user, local: true do |f| %>
+    <%= f.label :email, 'Email:' %>
+    <%= f.text_field :email, id: :user_email %>
+    <%= f.label :password, 'Password:' %>
+    <%= f.password_field :password, id: :user_password %>
+    <%= f.submit 'Register' %>
+  <% end %>
+</div>

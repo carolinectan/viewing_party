@@ -13,11 +13,13 @@ RSpec.describe 'user registration form' do
     email = 'ilovedogs@gmail.com'
     password = 'test'
 
-    fill_in :user_email, with: email
-    fill_in :user_password, with: password
+    within "#register-user" do
+      fill_in :user_email, with: email
+      fill_in :user_password, with: password
 
-    click_on 'Register'
-
+      click_on 'Register'
+    end
+    
     expect(page).to have_content("Welcome, #{email}!")
   end
 
@@ -27,10 +29,12 @@ RSpec.describe 'user registration form' do
     email = 'ilovedogs@gmail.com'
     password = 'test'
 
-    fill_in :user_email, with: email
-    fill_in :user_password, with: password
+    within "#register-user" do
+      fill_in :user_email, with: email
+      fill_in :user_password, with: password
 
-    click_on 'Register'
+      click_on 'Register'
+    end
 
     expect(current_path).to eq(dashboard_path)
   end

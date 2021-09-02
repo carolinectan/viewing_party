@@ -11,13 +11,14 @@ RSpec.describe 'logging in' do
 
       expect(current_path).to eq(login_path)
 
-      fill_in :email, with: @user.email
-      fill_in :password, with: @user.password
+      within "#login-form" do
+        fill_in :email, with: @user.email
+        fill_in :password, with: @user.password
 
-      click_on 'Log In'
+        click_on 'Log In'
+      end
 
       expect(current_path).to eq(dashboard_path)
-
       expect(page).to have_content("Welcome, #{@user.email}!")
       expect(page).to_not have_link('Log In')
       expect(page).to_not have_link('Register')
@@ -42,11 +43,13 @@ RSpec.describe 'logging in' do
 
       expect(current_path).to eq(login_path)
 
-      fill_in :email, with: @user.email
-      fill_in :password, with: 'incorrect password'
+      within "#login-form" do
+        fill_in :email, with: @user.email
+        fill_in :password, with: 'incorrect password'
 
-      click_on 'Log In'
-
+        click_on 'Log In'
+      end
+      
       expect(current_path).to eq(login_path)
 
       expect(page).to have_content('Sorry, your credentials were bad. Try again.')
