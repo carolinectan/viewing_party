@@ -1,22 +1,52 @@
 # Viewing Party
 
-This is the base repo for the [viewing party project](https://backend.turing.io/module3/projects/viewing_party) used for Turing's Backend Module 3.
 
-### About this Project
+## Table of Contents
+- [Overview](#overview)
+- [Learning Goals](#learning-goals)
+- [Tools Used](#tools-used)
+- [Getting Started](#getting-started)
+- [Features](#features)
+- [Database Schema](#database-schema)
+- [Contributors](#contributors)
 
-Viewing party is an application in which users can explore movie options and create a viewing party event for the user and friend's.
+## Overview
+[Viewing Party](https://github.com/InOmn1aParatus/viewing_party) is a 10-day, paired project during Turing School of Software and Design's Back-End Engineering program in Module 3. The goal was to create a Rails application that consumes APIs, where users can explore movie options and create a viewing party event for the user and friends. The database utilizes a self-referential relationship to allow users to have friends, similar to follower functionality on Twitter.
+
+This application is built off of the base repo for the [viewing party project](https://backend.turing.io/module3/projects/viewing_party) used for Turing's Backend Module 3.
+
+![](header.png)
+
+## Learning Goals
+
+Example wireframes [here](https://backend.turing.io/module3/projects/viewing_party/wireframes)
 
 ## Local Setup
 
-1. Fork and Clone the repo
-2. Install gem packages: `bundle install`
-3. Setup the database: `rails db:create`
+1. Fork repo: [repo](https://github.com/InOmn1aParatus/viewing_party)
+2. Clone repo: Run `git clone` <SSH link>.
+3. Change into application's directory: `cd viewing_party`
+3. Install gem packages: Run `bundle install`
+4. Setup the database: `rails db:{create, migrate, seed}`
 
+## Tools Used
 
-## Versions
+| Development | Testing       | Gems            |
+|   :----:    |    :----:     |    :----:       |
+| Ruby 2.7.2  | RSpec         | Pry             |
+| Rails 5.2.5 | WebMock       | ShouldaMatchers |
+| HTML5       | VCR           | Capybara        |
+| CSS3        | Launchy       | Figaro          |
+| VSCode      | SimpleCov     | Travis          |
+| Atom        | Capybara      | BCrypt          |
+| Github      |               |                 |
 
-- Ruby 2.7.2
+## Contributors
 
-- Rails 5.2.5
+👤  **Caroline Tan**
+- [GitHub](https://github.com/carolinectan)
+- [LinkedIn](https://www.linkedin.com/in/carolinectan/)
 
-Example wireframes to follow are found [here](https://backend.turing.io/module3/projects/viewing_party/wireframes)
+👤  **Matt Kragen**
+- [GitHub](https://github.com/InOmn1aParatus)
+- [LinkedIn](https://www.linkedin.com/in/mattkragen/)
