@@ -16,8 +16,16 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-dark bg-dark">
+    <nav>
       Viewing Party
+
+        <% if current_user %>
+          <p id="login">Logged in as <%= current_user.email %></p>
+          <p id="login"><%= link_to 'Log Out', logout_path %></p>
+        <% else %>
+          <p id="login"><%= link_to 'Log In', login_path %></p>
+          <p id="login"><%= link_to 'Register', users_path %></p>
+        <% end %>
     </nav>
 
     <main>
@@ -31,12 +39,12 @@
     <footer>
       <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" alt="The MovieDB Logo" width="75px" style="margin:10px" >
       <div>
-        <p>
+        <h5>
           Thank you to <a href="https://www.themoviedb.org/about/logos-attribution">The MovieDB</a> for providing the movie data that is used in this application.
-        </p>
-        <p>
+        </h5>
+        <h5>
           Further citation information regarding the movie data used in this project can be found <a href="http://files.grouplens.org/datasets/movielens/ml-latest-small-README.html">here.</a>
-        </p>
+        </h5>
       </div>
     </footer>
     <!-- Optional JavaScript -->

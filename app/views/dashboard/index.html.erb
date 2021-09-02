@@ -1,12 +1,12 @@
 <% if current_user %>
   <h1>Dashboard</h1>
   <hr>
-  <%= link_to 'Discover Movies', discover_path %>
-  <%= link_to 'Log Out', logout_path %>
+  <p><%= link_to 'Discover Movies', discover_path %></p>
   <br>
 
   <section id='friends'>
     <h2>Friends</h2>
+    <br>
     <%= form_with url: '/friendships', method: :post, local: true do |f| %>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.label :email, "Friend's Email:" %>
@@ -14,17 +14,19 @@
       <%= f.submit 'Add Friend' %>
     <% end %>
 
+    <h3>My Friends</h3>
     <% if !current_user.friendships.empty? %>
       <% @friends.each do |friend| %>
         <div id='user-<%= friend.id%>'>
-          <%= friend.email %>
+          <p><%= friend.email %></p>
           <% end %>
         </div>
     <% else %>
-      <p>You currently have no friends.</p>
+      <p id="no-friends">You currently have no friends.</p>
     <% end %>
   </section>
 
+  <br>
   <section id='viewing-parties'>
     <h2>Viewing Parties</h2>
     <div id='my-parties'>
@@ -56,8 +58,8 @@
       -->
     </div>
   </section>
-
-  <hr><br>
+  <br>
+  <hr>
 <% else %>
   <%= render 'partials/login_redirect' %>
 <% end %>

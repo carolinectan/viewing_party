@@ -1,11 +1,3 @@
 <h1>Welcome to Viewing Party!</h1>
 
-<p>Where you can search for top movies and create events to view movies with your friends!</p>
-
-<% if current_user %>
-  <p>Logged in as <%= current_user.email %></p>
-  <%= link_to 'Log Out', logout_path %>
-<% else %>
-  <p><%= link_to 'Log In', login_path %></p>
-  <p><%= link_to 'Register', users_path %></p>
-<% end %>
+<p>Where you can search for top movies and create events to view movies with your friends</p>
