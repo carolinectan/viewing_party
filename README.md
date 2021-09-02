@@ -19,8 +19,9 @@ This application is built off of the base repo for the [viewing party project](h
 - A user can *register* for the site and *log in and out* using our basic authentication/authorization functions.
   - These functions include authorization to view certain pages of the site only when logged in.
 - Using the **Discover** page, users can select from the Top 40 movies according to ***TheMovieDB*** API.
-- From the movie's show page, a user can create a *viewing party* with any friend they have added through their dashboard.
-- A user can view their list of current friends, as well as a list of viewing parties they are hosting along with the list of attendees.
+- From the movie's show page, a user can create a *viewing party* with any friends they have added through their dashboard.
+- On the dashboard, a user can view their list of friends as well as any viewing parties they are hosting.
+  - Viewing Parties in this section list their attendees.
 
 ## Learning Goals
 The learning goals for this project centered around API consumption, manipulation of JSON responses, and basic authentication & authorization.
