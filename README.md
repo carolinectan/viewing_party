@@ -16,6 +16,7 @@
 This application is built off of the base repo for the [viewing party project](https://backend.turing.io/module3/projects/viewing_party) used for Turing's Backend Module 3.
 
 ## Features
+
 - A user can *register* for the site and *log in and out* using our basic authentication/authorization functions.
   - These functions include authorization to view certain pages of the site only when logged in.
 - Using the **Discover** page, users can select from the Top 40 movies according to ***TheMovieDB*** API.
@@ -24,7 +25,12 @@ This application is built off of the base repo for the [viewing party project](h
   - Viewing Parties in this section list their attendees.
 
 ## Learning Goals
+
 The learning goals for this project centered around API consumption, manipulation of JSON responses, and basic authentication & authorization.
+
+It was necessary to implement a self-referential relationship in the User model to allow for Friendships to be formed between users.
+
+We were challenged to manipulate API response data without storing movie info inside of our own database. 
 
 Example wireframes [here](https://backend.turing.io/module3/projects/viewing_party/wireframes)
 
