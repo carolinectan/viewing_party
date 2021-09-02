@@ -3,6 +3,7 @@
 
 ## Table of Contents
 - [Overview](#overview)
+- [Features](#features)
 - [Learning Goals](#learning-goals)
 - [Tools Used](#tools-used)
 - [Local Setup](#getting-started)
@@ -14,9 +15,17 @@
 
 This application is built off of the base repo for the [viewing party project](https://backend.turing.io/module3/projects/viewing_party) used for Turing's Backend Module 3.
 
+## Features
+- A user can *register* for the site and *log in and out* using our basic authentication/authorization functions.
+  - These functions include authorization to view certain pages of the site only when logged in.
+- Using the **Discover** page, users can select from the Top 40 movies according to ***TheMovieDB*** API.
+- From the movie's show page, a user can create a *viewing party* with any friend they have added through their dashboard.
+- A user can view their list of current friends, as well as a list of viewing parties they are hosting along with the list of attendees.
+
 ![](header.png)
 
 ## Learning Goals
+The learning goals for this project centered around API consumption, manipulation of JSON responses, and basic authentication & authorization.
 
 Example wireframes [here](https://backend.turing.io/module3/projects/viewing_party/wireframes)
 
@@ -40,8 +49,8 @@ Example wireframes [here](https://backend.turing.io/module3/projects/viewing_par
 | Rails 5.2.5 | WebMock       | ShouldaMatchers |
 | HTML5       | VCR           | Capybara        |
 | CSS3        | Launchy       | Figaro          |
-| VSCode      | SimpleCov     | Travis          |
-| Atom        | Capybara      | BCrypt          |
+| VSCode      | SimpleCov     | BCrypt          |
+| Atom        | Capybara      |                 |
 | Github      |               |                 |
 
 ## Contributors
