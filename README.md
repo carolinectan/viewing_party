@@ -5,8 +5,7 @@
 - [Overview](#overview)
 - [Learning Goals](#learning-goals)
 - [Tools Used](#tools-used)
-- [Getting Started](#getting-started)
-- [Features](#features)
+- [Local Setup](#getting-started)
 - [Database Schema](#database-schema)
 - [Contributors](#contributors)
 
@@ -29,6 +28,10 @@ Example wireframes [here](https://backend.turing.io/module3/projects/viewing_par
 3. Install gem packages: Run `bundle install`
 4. Setup the database: `rails db:{create, migrate, seed}`
 
+## Database Schema
+
+[![Screen-Shot-2021-09-01-at-5-04-10-PM.png](https://i.postimg.cc/Df5s6Vn7/Screen-Shot-2021-09-01-at-5-04-10-PM.png)](https://postimg.cc/s1QvfNML)
+  
 ## Tools Used
 
 | Development | Testing       | Gems            |
