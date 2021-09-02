@@ -22,9 +22,5 @@ RSpec.describe "Discover index page" do
         expect(current_path).to eq(movies_path)
       end
     end
-
-    it '' do
-    
-    end
   end
 end

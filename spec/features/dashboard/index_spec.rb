@@ -20,13 +20,13 @@ RSpec.describe 'Dashboard page' do
 
       user = User.create(email: 'ilovedogs@gmail.com', password: 'test')
 
-      within "login-form" do
+      within "#login-form" do
         fill_in :email, with: user.email
         fill_in :password, with: user.password
 
         click_on 'Log In'
       end
-      
+
       expect(current_path).to eq(dashboard_path)
       expect(page).to have_content("Welcome, #{user.email}!")
     end
