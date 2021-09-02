@@ -22,8 +22,6 @@ This application is built off of the base repo for the [viewing party project](h
 - From the movie's show page, a user can create a *viewing party* with any friend they have added through their dashboard.
 - A user can view their list of current friends, as well as a list of viewing parties they are hosting along with the list of attendees.
 
-![](header.png)
-
 ## Learning Goals
 The learning goals for this project centered around API consumption, manipulation of JSON responses, and basic authentication & authorization.
 
@@ -31,7 +29,7 @@ Example wireframes [here](https://backend.turing.io/module3/projects/viewing_par
 
 ## Local Setup
 
-1. Fork repo: [repo](https://github.com/InOmn1aParatus/viewing_party)
+1. Fork this repository
 2. Clone repo: Run `git clone` <SSH link>.
 3. Change into application's directory: `cd viewing_party`
 3. Install gem packages: Run `bundle install`
