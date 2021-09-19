@@ -2,18 +2,18 @@
   <h1><%= @movie.title %>'s Details</h1>
   <hr><br>
 
-  <%= link_to "Create a Viewing Party", new_party_path(movie_id: @movie.id) %>
+  <p><%= link_to "Create a Viewing Party", new_party_path(movie_id: @movie.id) %></p>
   <br>
 
   <h3>Runtime: <%= @movie.runtime %> minutes</h3>
   <h3>Vote Average: <%= @movie.vote_average %></h3>
   <h3>Genres: <%= @movie.genres.join(', ') %></h3>
   <h3>Summary: <%= @movie.summary %></h3>
+  <h3>Cast:<br>
   <div id='cast'>
-    <h3>Cast:</h3>
     <% @movie.cast.each do |member| %>
-      <p><%= member.name %> as <%= member.character %></p>
-    <% end %>
+      <div><%= member.name %> as <%= member.character %><br></div>
+    <% end %></h3>
   </div>
   <hr><br>
 

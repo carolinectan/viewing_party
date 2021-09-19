@@ -18,7 +18,7 @@
       <br>
       <%= f.label :start_time, 'Start Time:' %>
       <%= f.time_select :start_time, id: :start_time %>
-      <br>
+      <br><br>
       <%= f.label :invite_friends %>
       <%= f.collection_check_boxes :attendees, current_user.friends, :id, :email do |b| %>
         <div>

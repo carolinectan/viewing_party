@@ -55,8 +55,8 @@ nav {
 }
 
 form {
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   align-items: center;
   text-align: center;
   margin: 25px auto;
@@ -66,7 +66,23 @@ form {
   border-radius: 10px;
 }
 
-input {
+input[type = submit] {
+  align-items: center;
+  text-align: center;
+  margin: 25px auto;
+  padding: 10px;
+  width: 50%;
+  border: 2px solid #f8b195;
+  border-radius: 10px;
+  background-color: #f8b195
+}
+
+input[type = submit]:hover {
+  text-decoration: underline;
+  color: #c06c84
+}
+
+input, select {
   padding: 4px;
   margin: 6px
 }

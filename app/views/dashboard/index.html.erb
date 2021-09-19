@@ -32,10 +32,10 @@
     <div id='my-parties'>
       <h3>My Parties</h3>
       <% current_user.parties.each do |party| %>
-        <p>Date: <%= party.date %></p>
-        <p>Time: <%= party.duration %></p>
-        <p>You are the host!</p>
-        <p>Attendees:</p>
+        <p><b>Date:</b> <%= party.date %></p>
+        <p><b>Time:</b> <%= party.duration %> minutes</p>
+        <p><b>Host:</b> <%= party.user.email %></p>
+        <p><b>Attendees:</b></p>
         <% party.attendees.each do |attendee| %>
           <p><%= attendee.user.email unless attendee.user.email == current_user.email %></p>
         <% end %>
