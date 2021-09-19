@@ -6,9 +6,10 @@
   <br>
 
   <section id="new_party">
-    <%= form_with model: @party, local: true do |f| %>
+    <%= form_with model: @party, method: :post, local: true do |f| %>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.hidden_field :movie_id, value: @movie.id %>
+      <%# <%= f.hidden_field :movie_title, value: @movie.title %> %>
       <br>
       <%= f.label :duration, 'Duration:' %>
       <%= f.text_field :duration, id: :duration, value: @movie.runtime %>
@@ -19,12 +20,16 @@
       <%= f.label :start_time, 'Start Time:' %>
       <%= f.time_select :start_time, id: :start_time %>
       <br><br>
-      <%= f.label :invite_friends %>
-      <%= f.collection_check_boxes :attendees, current_user.friends, :id, :email do |b| %>
+
+      <%= f.label "Friends invited" %>
+      <% current_user.friends.each do |friend| %>
         <div>
-          <p><%= b.check_box %> <%= b.label %></p>
+          <% unless friend == current_user %>
+            <%= check_box("Friend", friend.id)%><%= friend.email %>
+          <% end %>
         </div>
       <% end %>
+
       <br>
       <%= f.submit 'Create Party' %>
     <% end %>

@@ -18,7 +18,7 @@
     <% if !current_user.friendships.empty? %>
       <% @friends.each do |friend| %>
         <div id='user-<%= friend.id%>'>
-          <p><%= friend.email %></p>
+          <p><%= friend.email unless friend.email == current_user.email %></p>
           <% end %>
         </div>
     <% else %>
@@ -32,12 +32,13 @@
     <div id='my-parties'>
       <h3>My Parties</h3>
       <% current_user.parties.each do |party| %>
+        <h4><%= party.movie_id %></h4>
         <p><b>Date:</b> <%= party.date %></p>
         <p><b>Time:</b> <%= party.duration %> minutes</p>
         <p><b>Host:</b> <%= party.user.email %></p>
         <p><b>Attendees:</b></p>
-        <% party.attendees.each do |attendee| %>
-          <p><%= attendee.user.email unless attendee.user.email == current_user.email %></p>
+        <% party.users.each do |user| %>
+          <p><%= user.email unless user == current_user %></p>
         <% end %>
       <% end %>
     </div>
